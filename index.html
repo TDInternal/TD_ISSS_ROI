@@ -160,7 +160,7 @@
                         <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 mb-8">
                              <div class="input-field">
                                 <label for="avgSalary">Average FTE Salary (Fully Loaded)</label>
-                                <input type="number" id="avgSalary" placeholder="e.g., 60000">
+                                <input type="number" id="avgSalary" value="60000">
                                  <p class="input-desc">Annual cost of one FTE, including benefits. (PDSO, DSO, etc...)</p>
                             </div>
                         </div>
@@ -228,7 +228,7 @@
                 </div>
 
                 <!-- Right Column: Results (Sticky) -->
-                <div id="results-sidebar" class="lg:sticky top-8 space-y-8 mt-8 lg:mt-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <div id="results-sidebar" class="lg:sticky top-8 space-y-8 mt-8 lg:mt-0">
                     <div id="results-dashboard" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-200 print-break-inside-avoid print-shadow-none">
                          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
                             <span class="bg-sky-100 text-[#00aeef] rounded-lg p-2">
@@ -287,7 +287,7 @@
             </div>
 
             <!-- Detailed Analysis & Campus Impact Section -->
-            <div id="detailed-report" class="lg:col-span-3 mt-12 opacity-0 max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
+            <div id="detailed-report" class="lg:col-span-3 mt-12">
                  <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 print-break-inside-avoid">
                     
                     <!-- Campus Impact Section -->
@@ -532,7 +532,7 @@
         };
         
         // --- CORE CALCULATION LOGIC ---
-        function calculateROI() {
+        function calculateROI(isInitialLoad = false) {
             const inputs = {
                 avgSalary: getVal('avgSalary'),
                 tdAnnualCost: getVal('tdAnnualCost'),
@@ -569,8 +569,10 @@
                 netAnnualSavings = annualEfficiencySavings - inputs.tdAnnualCost;
                 roiPercentage = (netAnnualSavings / inputs.tdAnnualCost) * 100;
                 paybackPeriod = annualEfficiencySavings > 0 ? (inputs.tdAnnualCost / (annualEfficiencySavings / 12)) : 0;
-                resultElements.finalRoiMetrics.classList.remove('opacity-40');
-                resultElements.detailedReport.classList.remove('opacity-0', 'max-h-0');
+                if (!isInitialLoad) {
+                    resultElements.finalRoiMetrics.classList.remove('opacity-40');
+                    resultElements.detailedReport.classList.remove('opacity-0', 'max-h-0');
+                }
             } else {
                 resultElements.finalRoiMetrics.classList.add('opacity-40');
                 resultElements.detailedReport.classList.add('opacity-0', 'max-h-0');
@@ -596,47 +598,51 @@
                 annualEfficiencySavings, overallEfficiencyGain, netAnnualSavings, roiPercentage, paybackPeriod,
                 immEfficiencyGain, advEfficiencyGain, commEfficiencyGain,
                 currentServiceCost, projectedServiceCost, cumulativeAdditionalRevenue, tdAnnualCost: inputs.tdAnnualCost
-            });
+            }, isInitialLoad);
         }
 
-        function updateUI(results) {
+        function updateUI(results, isInitialLoad) {
             // Update Snapshot
-            resultElements.annualEfficiencySavings.textContent = formatCurrency(results.annualEfficiencySavings);
+            resultElements.annualEfficiencySavings.textContent = isInitialLoad ? "$0" : formatCurrency(results.annualEfficiencySavings);
             resultElements.netSavings.textContent = results.netAnnualSavings !== null ? formatCurrency(results.netAnnualSavings) : '$...';
             resultElements.roiPercentage.textContent = results.roiPercentage !== null ? `${Math.round(results.roiPercentage)}%` : '--';
             resultElements.paybackPeriod.innerHTML = results.paybackPeriod !== null ? `${Math.ceil(results.paybackPeriod)} <span class="text-xl">mo</span>` : '--';
-            const timeSavingsPercent = Math.round(results.overallEfficiencyGain * 100);
+            const timeSavingsPercent = isInitialLoad ? 0 : Math.round(results.overallEfficiencyGain * 100);
             resultElements.timeSavings.textContent = `${timeSavingsPercent}%`;
             resultElements.timeSavingsFill.style.width = `${timeSavingsPercent}%`;
 
-            // Update Detailed Report
-            const immPercent = Math.round(results.immEfficiencyGain * 100);
-            resultElements.immEfficiency.textContent = `${immPercent}%`;
-            resultElements.immEfficiencyFill.style.width = `${immPercent}%`;
-            
-            const advPercent = Math.round(results.advEfficiencyGain * 100);
-            resultElements.advEfficiency.textContent = `${advPercent}%`;
-            resultElements.advEfficiencyFill.style.width = `${advPercent}%`;
+            if (!isInitialLoad) {
+                // Update Detailed Report only if it's not the initial load
+                const immPercent = Math.round(results.immEfficiencyGain * 100);
+                resultElements.immEfficiency.textContent = `${immPercent}%`;
+                resultElements.immEfficiencyFill.style.width = `${immPercent}%`;
+                
+                const advPercent = Math.round(results.advEfficiencyGain * 100);
+                resultElements.advEfficiency.textContent = `${advPercent}%`;
+                resultElements.advEfficiencyFill.style.width = `${advPercent}%`;
 
-            const commPercent = Math.round(results.commEfficiencyGain * 100);
-            resultElements.commEfficiency.textContent = `${commPercent}%`;
-            resultElements.commEfficiencyFill.style.width = `${commPercent}%`;
+                const commPercent = Math.round(results.commEfficiencyGain * 100);
+                resultElements.commEfficiency.textContent = `${commPercent}%`;
+                resultElements.commEfficiencyFill.style.width = `${commPercent}%`;
 
-            resultElements.currentCost.textContent = formatCurrency(results.currentServiceCost);
-            resultElements.projectedCost.textContent = formatCurrency(results.projectedServiceCost);
-            resultElements.efficiencySavingsDetail.textContent = formatCurrency(results.annualEfficiencySavings);
-            resultElements.tdInvestment.textContent = formatCurrency(results.tdAnnualCost);
-            resultElements.netSavingsDetail.textContent = results.netAnnualSavings !== null ? formatCurrency(results.netAnnualSavings) : '$...';
-            resultElements.additionalRevenueDetail.textContent = formatCurrency(results.cumulativeAdditionalRevenue);
-            
-            // Highlight all visible metrics
-            Object.values(resultElements).forEach(el => highlightUpdate(el));
+                resultElements.currentCost.textContent = formatCurrency(results.currentServiceCost);
+                resultElements.projectedCost.textContent = formatCurrency(results.projectedServiceCost);
+                resultElements.efficiencySavingsDetail.textContent = formatCurrency(results.annualEfficiencySavings);
+                resultElements.tdInvestment.textContent = formatCurrency(results.tdAnnualCost);
+                resultElements.netSavingsDetail.textContent = results.netAnnualSavings !== null ? formatCurrency(results.netAnnualSavings) : '$...';
+                resultElements.additionalRevenueDetail.textContent = formatCurrency(results.cumulativeAdditionalRevenue);
+                
+                // Highlight all visible metrics
+                Object.values(resultElements).forEach(el => highlightUpdate(el));
+            }
         }
 
         window.addEventListener('DOMContentLoaded', () => {
+            let hasInteracted = false;
+
             const allInputs = document.querySelectorAll('input[type="number"]');
             allInputs.forEach(input => {
-                if(input.value && input.id !== 'avgSalary') {
+                if(input.value) {
                     input.classList.add('text-slate-400');
                 }
                 input.addEventListener('focus', (e) => {
@@ -645,12 +651,16 @@
                 });
 
                  input.addEventListener('input', () => {
-                    calculateROI();
+                    if (!hasInteracted) {
+                        resultElements.sidebar.classList.remove('opacity-0');
+                        hasInteracted = true;
+                    }
+                    calculateROI(false);
                  });
             });
             
-            // Calculate initial values on load
-            calculateROI();
+            // Calculate initial (zero) state on load
+            updateUI({}, true);
         });
     </script>
 </body>
