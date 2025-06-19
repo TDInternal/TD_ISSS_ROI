@@ -92,6 +92,7 @@
             <p class="mt-4 text-lg text-sky-100 max-w-3xl mx-auto">
                 Discover the value Terra Dotta can bring to your international office. Enter your institution's data to quantify efficiency gains and revenue opportunities.
             </p>
+            <p class="mt-4 text-xs text-sky-200/80 italic">Savings calculations are based on actual Terra Dotta ISSS clients</p>
         </header>
 
         <main class="p-4 sm:p-6 lg:p-8">
@@ -228,7 +229,7 @@
                 </div>
 
                 <!-- Right Column: Results (Sticky) -->
-                <div id="results-sidebar" class="lg:sticky top-8 space-y-8 mt-8 lg:mt-0">
+                <div id="results-sidebar" class="lg:sticky top-8 space-y-8 mt-8 lg:mt-0 opacity-0 transition-opacity duration-700 ease-in-out">
                     <div id="results-dashboard" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-200 print-break-inside-avoid print-shadow-none">
                          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
                             <span class="bg-sky-100 text-[#00aeef] rounded-lg p-2">
@@ -287,7 +288,7 @@
             </div>
 
             <!-- Detailed Analysis & Campus Impact Section -->
-            <div id="detailed-report" class="lg:col-span-3 mt-12">
+            <div id="detailed-report" class="lg:col-span-3 mt-12 opacity-0 max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
                  <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 print-break-inside-avoid">
                     
                     <!-- Campus Impact Section -->
@@ -649,13 +650,14 @@
                  input.addEventListener('input', () => {
                     if (!hasInteracted) {
                         resultElements.sidebar.classList.remove('opacity-0');
+                        calculateROI(); // Run initial calculation on first interaction
                         hasInteracted = true;
+                    } else {
+                        calculateROI();
                     }
-                    calculateROI();
                 });
             });
             
-            // Do not calculate on load; wait for user interaction
         });
     </script>
 </body>
