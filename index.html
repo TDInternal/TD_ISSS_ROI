@@ -228,7 +228,7 @@
                 </div>
 
                 <!-- Right Column: Results (Sticky) -->
-                <div class="lg:sticky top-8 space-y-8 mt-8 lg:mt-0">
+                <div id="results-sidebar" class="lg:sticky top-8 space-y-8 mt-8 lg:mt-0 opacity-0 transition-opacity duration-700 ease-in-out">
                     <div id="results-dashboard" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-200 print-break-inside-avoid print-shadow-none">
                          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
                             <span class="bg-sky-100 text-[#00aeef] rounded-lg p-2">
@@ -287,7 +287,7 @@
             </div>
 
             <!-- Detailed Analysis & Campus Impact Section -->
-            <div id="detailed-report" class="lg:col-span-3 mt-12">
+            <div id="detailed-report" class="lg:col-span-3 mt-12 opacity-0 max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
                  <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 print-break-inside-avoid">
                     
                     <!-- Campus Impact Section -->
@@ -496,6 +496,7 @@
         allInputIds.forEach(id => elements[id] = document.getElementById(id));
         
         const resultElements = {
+            sidebar: document.getElementById('results-sidebar'),
             finalRoiMetrics: document.getElementById('final-roi-metrics'),
             detailedReport: document.getElementById('detailed-report'),
             // Snapshot
@@ -633,20 +634,29 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            const allInputsWithValue = document.querySelectorAll('input[type="number"][value]');
+            let sidebarRevealed = false;
+            
+            const allInputsWithValue = document.querySelectorAll('input[type="number"]');
             allInputsWithValue.forEach(input => {
-                input.classList.add('text-slate-400');
+                if(input.value) {
+                    input.classList.add('text-slate-400');
+                }
                 input.addEventListener('focus', (e) => {
                     e.target.classList.remove('text-slate-400');
                     e.target.select();
                 });
+
+                 input.addEventListener('input', () => {
+                    if (!sidebarRevealed) {
+                        resultElements.sidebar.classList.remove('opacity-0');
+                        sidebarRevealed = true;
+                    }
+                    calculateROI();
+                });
             });
             
-            allInputIds.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) element.addEventListener('input', calculateROI);
-            });
-            calculateROI();
+            // Initial calculation is now triggered by the first input event.
+            // calculateROI(); // Do not run on load.
         });
     </script>
 </body>
