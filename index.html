@@ -160,7 +160,7 @@
                         <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 mb-8">
                              <div class="input-field">
                                 <label for="avgSalary">Average FTE Salary (Fully Loaded)</label>
-                                <input type="number" id="avgSalary" value="60000">
+                                <input type="number" id="avgSalary" placeholder="e.g., 60000">
                                  <p class="input-desc">Annual cost of one FTE, including benefits. (PDSO, DSO, etc...)</p>
                             </div>
                         </div>
@@ -270,6 +270,7 @@
                                      <div id="timeSavingsFill" class="bg-gradient-to-r from-[#00aeef] to-[#019c96] h-6 rounded-full transition-all duration-700 ease-out"></div>
                                      <span id="timeSavings" class="absolute inset-0 flex items-center justify-center text-sm font-bold text-white tracking-wider">0%</span>
                                  </div>
+                                 <p class="text-xs text-slate-500 mt-2 text-center italic">Time Savings calculations are based on actual Terra Dotta ISSS clients</p>
                             </div>
                         </div>
                     </div>
@@ -287,7 +288,7 @@
             </div>
 
             <!-- Detailed Analysis & Campus Impact Section -->
-            <div id="detailed-report" class="lg:col-span-3 mt-12">
+            <div id="detailed-report" class="lg:col-span-3 mt-12 opacity-0 max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
                  <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 print-break-inside-avoid">
                     
                     <!-- Campus Impact Section -->
@@ -638,8 +639,6 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            let hasInteracted = false;
-
             const allInputs = document.querySelectorAll('input[type="number"]');
             allInputs.forEach(input => {
                 if(input.value) {
@@ -651,16 +650,12 @@
                 });
 
                  input.addEventListener('input', () => {
-                    if (!hasInteracted) {
-                        resultElements.sidebar.classList.remove('opacity-0');
-                        hasInteracted = true;
-                    }
                     calculateROI(false);
                  });
             });
             
             // Calculate initial (zero) state on load
-            updateUI({}, true);
+            calculateROI(true);
         });
     </script>
 </body>
