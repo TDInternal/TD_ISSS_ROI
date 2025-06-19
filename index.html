@@ -160,8 +160,8 @@
                         <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 mb-8">
                              <div class="input-field">
                                 <label for="avgSalary">Average FTE Salary (Fully Loaded)</label>
-                                <input type="number" id="avgSalary" value="60000">
-                                 <p class="input-desc">Annual cost of one FTE, including benefits.</p>
+                                <input type="number" id="avgSalary" placeholder="e.g., 60000">
+                                 <p class="input-desc">Annual cost of one FTE, including benefits. (PDSO, DSO, etc...)</p>
                             </div>
                         </div>
                         
@@ -228,7 +228,7 @@
                 </div>
 
                 <!-- Right Column: Results (Sticky) -->
-                <div id="results-sidebar" class="lg:sticky top-8 space-y-8 mt-8 lg:mt-0">
+                <div id="results-sidebar" class="lg:sticky top-8 space-y-8 mt-8 lg:mt-0 opacity-0 transition-opacity duration-700 ease-in-out">
                     <div id="results-dashboard" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-200 print-break-inside-avoid print-shadow-none">
                          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
                             <span class="bg-sky-100 text-[#00aeef] rounded-lg p-2">
@@ -287,7 +287,7 @@
             </div>
 
             <!-- Detailed Analysis & Campus Impact Section -->
-            <div id="detailed-report" class="lg:col-span-3 mt-12">
+            <div id="detailed-report" class="lg:col-span-3 mt-12 opacity-0 max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
                  <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 print-break-inside-avoid">
                     
                     <!-- Campus Impact Section -->
@@ -634,11 +634,9 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            let hasInteracted = false;
-
             const allInputs = document.querySelectorAll('input[type="number"]');
             allInputs.forEach(input => {
-                if(input.value) {
+                if(input.value && input.id !== 'avgSalary') {
                     input.classList.add('text-slate-400');
                 }
                 input.addEventListener('focus', (e) => {
@@ -647,10 +645,6 @@
                 });
 
                  input.addEventListener('input', () => {
-                    if (!hasInteracted) {
-                        resultElements.sidebar.classList.remove('opacity-0');
-                        hasInteracted = true;
-                    }
                     calculateROI();
                  });
             });
