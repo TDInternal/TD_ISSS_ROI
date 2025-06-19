@@ -97,7 +97,7 @@
 
         <main class="p-4 sm:p-6 lg:p-8">
             <!-- Main Grid Layout -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8 mt-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8 mt-8 lg:items-start">
                 
                 <!-- Left Column: Inputs -->
                 <div class="lg:col-span-2 space-y-8">
@@ -635,8 +635,6 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            let hasInteracted = false;
-
             const allInputs = document.querySelectorAll('input[type="number"]');
             allInputs.forEach(input => {
                 if(input.value) {
@@ -648,16 +646,12 @@
                 });
 
                  input.addEventListener('input', () => {
-                    if (!hasInteracted) {
-                        resultElements.sidebar.classList.remove('opacity-0');
-                        calculateROI(); // Run initial calculation on first interaction
-                        hasInteracted = true;
-                    } else {
-                        calculateROI();
-                    }
-                });
+                    calculateROI();
+                 });
             });
             
+            // Calculate initial values on load
+            calculateROI();
         });
     </script>
 </body>
