@@ -9,37 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Use the Inter font family defined in the <link> tag */
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-
-        /* Custom focus ring color */
         .focus-ring-td-purple:focus {
             --tw-ring-color: #00aeef;
             --tw-ring-opacity: 0.5;
         }
-
-        /* Custom gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #019c96, #00aeef);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-        
-        .gradient-text-green {
-            background: linear-gradient(135deg, #8dc73f, #019c96);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-        
-        /* Subtle animation for value updates */
         @keyframes highlight-update {
             0% { background-color: rgba(141, 199, 63, 0); }
             50% { background-color: rgba(141, 199, 63, 0.2); }
@@ -51,8 +29,6 @@
         .highlight-on-update.updated {
             animation: highlight-update 1s ease;
         }
-
-        /* Hide number input spinners */
         input[type="number"]::-webkit-outer-spin-button,
         input[type="number"]::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -62,22 +38,14 @@
             -moz-appearance: textfield;
             appearance: textfield;
         }
-        
-        /* Print styles */
         @media print {
             body {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
-            .no-print {
-                display: none !important;
-            }
-            .print-break-inside-avoid {
-                break-inside: avoid;
-            }
-             .print-shadow-none {
-                box-shadow: none !important;
-            }
+            .no-print { display: none !important; }
+            .print-break-inside-avoid { break-inside: avoid; }
+            .print-shadow-none { box-shadow: none !important; }
         }
     </style>
 </head>
@@ -86,17 +54,15 @@
     <div class="max-w-7xl mx-auto">
         <!-- Header Banner -->
         <header class="bg-gradient-to-r from-[#00aeef] to-[#019c96] text-white p-8 md:p-12 text-center rounded-b-2xl shadow-lg">
-             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
                 Terra Dotta ISSS ROI Calculator
             </h1>
             <p class="mt-4 text-lg text-sky-100 max-w-3xl mx-auto">
                 Discover the value Terra Dotta can bring to your international office. Enter your institution's data to quantify efficiency gains and revenue opportunities.
             </p>
-            <p class="mt-4 text-xs text-sky-200/80 italic">Savings calculations are based on actual Terra Dotta ISSS clients</p>
         </header>
 
         <main class="p-4 sm:p-6 lg:p-8">
-            <!-- Main Grid Layout -->
             <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8 mt-8 lg:items-start">
                 
                 <!-- Left Column: Inputs -->
@@ -106,43 +72,50 @@
                     <div id="institution-profile" class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 print-break-inside-avoid">
                         <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
                             <span class="bg-sky-100 text-[#00aeef] rounded-lg p-2">
-                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
-                               </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" /></svg>
                             </span>
-                            1. Your Institution Profile
+                            1. Your Institution & Office Profile
                         </h2>
-                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
-                            <!-- Input Fields -->
+                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div class="input-field">
                                 <label for="currentEnrollment">Current International Enrollment</label>
-                                <input type="number" id="currentEnrollment" value="1000">
+                                <input type="number" id="currentEnrollment" placeholder="e.g., 1000">
                                 <p class="input-desc">Total current international students.</p>
                             </div>
-                            <div class="input-field">
-                                <label for="fallApplications">Fall International Applications</label>
-                                <input type="number" id="fallApplications" value="2000">
-                                <p class="input-desc">Applications for the main Fall intake.</p>
-                            </div>
-                            <div class="input-field">
+                             <div class="input-field">
                                 <label for="admittedApplicants">Fall Admitted Applicants</label>
-                                <input type="number" id="admittedApplicants" value="1500">
+                                <input type="number" id="admittedApplicants" placeholder="e.g., 1500">
                                 <p class="input-desc">Applicants admitted for the Fall term.</p>
                             </div>
                             <div class="input-field">
-                                <label for="fallEnrollments">Fall Enrollments</label>
-                                <input type="number" id="fallEnrollments" value="200">
-                                 <p class="input-desc">New international students enrolled in Fall.</p>
+                                <label for="fallEnrollments">New Fall Enrollments</label>
+                                <input type="number" id="fallEnrollments" placeholder="e.g., 200">
+                                <p class="input-desc">New international students enrolled in Fall.</p>
                             </div>
                             <div class="input-field">
-                                <label for="numFTE">ISSS Office FTE</label>
-                                <input type="number" id="numFTE" value="5" step="0.5">
-                                <p class="input-desc">Full-time equivalent DSO/Advisors.</p>
+                                <label for="avgTuition">Average Annual Int'l Tuition ($)</label>
+                                <input type="number" id="avgTuition" placeholder="e.g., 20000">
+                                <p class="input-desc">Average tuition & fees per student.</p>
                             </div>
                              <div class="input-field">
-                                <label for="avgTuition">Average Annual Intl. Tuition ($)</label>
-                                <input type="number" id="avgTuition" value="20000">
-                                <p class="input-desc">Average tuition & fees per student.</p>
+                                <label for="avgSalary">Average FTE Salary (Fully Loaded)</label>
+                                <input type="number" id="avgSalary" placeholder="e.g., 60000">
+                                <p class="input-desc">Annual cost of one FTE, including benefits.</p>
+                            </div>
+                             <div class="input-field">
+                                <label for="numFTE">ISSS Office FTE</label>
+                                <input type="number" id="numFTE" placeholder="e.g., 5" step="0.5">
+                                <p class="input-desc">Full-time equivalent DSO/Advisors.</p>
+                            </div>
+                            <div class="input-field">
+                                <label for="targetYield">Current Intl. Yield Rate (%)</label>
+                                <div id="targetYield" class="w-full p-3 bg-slate-200 rounded-lg border border-slate-300 text-slate-500">0%</div>
+                                <p class="input-desc">Calculated from Fall Enrollments & Admits.</p>
+                            </div>
+                             <div class="input-field">
+                                <label for="growthRate">Expected Annual Growth Rate (%)</label>
+                                <input type="number" id="growthRate" placeholder="e.g., 10" step="0.5">
+                                <p class="input-desc">Target for int'l student growth.</p>
                             </div>
                         </div>
                     </div>
@@ -155,465 +128,330 @@
                             </span>
                             2. Weekly Time Allocation
                         </h2>
-                        <p class="mt-2 text-slate-600">First, provide your average staff salary. Then, estimate the total hours per week your office spends on these tasks.</p>
+                        <p class="mt-2 text-slate-600">Estimate the total hours per week your office spends on these common tasks.</p>
                         
-                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 mb-8">
-                             <div class="input-field">
-                                <label for="avgSalary">Average FTE Salary (Fully Loaded)</label>
-                                <input type="number" id="avgSalary" placeholder="e.g., 60000">
-                                 <p class="input-desc">Annual cost of one FTE, including benefits. (PDSO, DSO, etc...)</p>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-6">
-                            <!-- Categories: Immigration, Advising, Communication -->
+                        <div class="mt-6 space-y-6">
                             <div class="time-category">
                                 <h3 class="font-semibold text-slate-800 text-lg mb-4">🏛️ Immigration & Compliance</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="time-input" data-id="sevisReg" data-reduction="0.50"><label>SEVIS Registration</label><input type="number" id="sevisReg" value="30"></div>
-                                    <div class="time-input" data-id="issuingForms" data-reduction="0.60"><label>I-20/DS-2019 Issuance</label><input type="number" id="issuingForms" value="30"></div>
-                                    <div class="time-input" data-id="optProcessing" data-reduction="0.60"><label>CPT/OPT/STEM I-20</label><input type="number" id="optProcessing" value="20"></div>
-                                    <div class="time-input" data-id="sevisReporting" data-reduction="0.50"><label>SEVIS Batching/Reporting</label><input type="number" id="sevisReporting" value="20"></div>
-                                    <div class="time-input" data-id="workshops" data-reduction="0.67"><label>CPT/OPT Workshops</label><input type="number" id="workshops" value="5"></div>
-                                    <div class="time-input" data-id="dataManagement" data-reduction="0.33"><label>Data Management (peak)</label><input type="number" id="dataManagement" value="15"></div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div class="time-input" data-id="sevisReg" data-reduction="0.50"><label>SEVIS Registration</label><input type="number" id="sevisReg" placeholder="e.g., 30"></div>
+                                    <div class="time-input" data-id="issuingForms" data-reduction="0.60"><label>I-20/DS-2019 Issuance</label><input type="number" id="issuingForms" placeholder="e.g., 30"></div>
+                                    <div class="time-input" data-id="optProcessing" data-reduction="0.60"><label>CPT/OPT/STEM I-20</label><input type="number" id="optProcessing" placeholder="e.g., 20"></div>
+                                    <div class="time-input" data-id="sevisReporting" data-reduction="0.50"><label>SEVIS Batching/Reporting</label><input type="number" id="sevisReporting" placeholder="e.g., 20"></div>
+                                    <div class="time-input" data-id="workshops" data-reduction="0.67"><label>CPT/OPT Workshops</label><input type="number" id="workshops" placeholder="e.g., 5"></div>
+                                    <div class="time-input" data-id="dataManagement" data-reduction="0.33"><label>Data Management (peak)</label><input type="number" id="dataManagement" placeholder="e.g., 15"></div>
                                 </div>
                             </div>
                              <div class="time-category">
                                 <h3 class="font-semibold text-slate-800 text-lg mb-4">👥 Advising & Student Support</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="time-input" data-id="frontDesk" data-reduction="0.80"><label>Front Desk Inquiries</label><input type="number" id="frontDesk" value="15"></div>
-                                    <div class="time-input" data-id="emailMgmt" data-reduction="0.67"><label>Email Management</label><input type="number" id="emailMgmt" value="40"></div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div class="time-input" data-id="frontDesk" data-reduction="0.80"><label>Front Desk Inquiries</label><input type="number" id="frontDesk" placeholder="e.g., 15"></div>
+                                    <div class="time-input" data-id="emailMgmt" data-reduction="0.67"><label>Email Management</label><input type="number" id="emailMgmt" placeholder="e.g., 40"></div>
                                 </div>
                             </div>
                             <div class="time-category">
                                 <h3 class="font-semibold text-slate-800 text-lg mb-4">📢 Communication & Outreach</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div class="time-input" data-id="marketing" data-reduction="0.67"><label>Marketing/Communication</label><input type="number" id="marketing" value="20"></div>
-                                    <div class="time-input" data-id="letterIssuance" data-reduction="0.75"><label>Letter Issuance (SSN, visa)</label><input type="number" id="letterIssuance" value="15"></div>
-                                    <div class="time-input" data-id="formCreation" data-reduction="0.53"><label>Forms & Surveys (peak)</label><input type="number" id="formCreation" value="30"></div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div class="time-input" data-id="marketing" data-reduction="0.67"><label>Marketing/Communication</label><input type="number" id="marketing" placeholder="e.g., 20"></div>
+                                    <div class="time-input" data-id="letterIssuance" data-reduction="0.75"><label>Letter Issuance (SSN, visa)</label><input type="number" id="letterIssuance" placeholder="e.g., 15"></div>
+                                    <div class="time-input" data-id="formCreation" data-reduction="0.53"><label>Forms & Surveys (peak)</label><input type="number" id="formCreation" placeholder="e.g., 30"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Section 3: Financial & Growth -->
-                     <div id="financial-assumptions" class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 print-break-inside-avoid">
-                        <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
-                             <span class="bg-orange-100 text-[#f57922] rounded-lg p-2">
-                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
-                                </svg>
-                            </span>
-                            3. Investment & Growth Inputs
-                        </h2>
-                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6">
-                            <div class="input-field">
-                                <label for="tdAnnualCost">Annual Terra Dotta Investment ($)</label>
-                                <input type="number" id="tdAnnualCost" placeholder="Enter Value to Calculate ROI">
-                                <p class="input-desc">Your estimated annual software cost.</p>
-                            </div>
-                            <div class="input-field">
-                                <label for="growthRate">Expected Annual Growth Rate (%)</label>
-                                <input type="number" id="growthRate" value="10" step="0.5">
-                                <p class="input-desc">Target for int'l student growth.</p>
-                            </div>
-                             <div class="input-field">
-                                <label for="targetYield">Target Intl. Yield Rate (%)</label>
-                                <input type="number" id="targetYield" value="15" step="0.5">
-                                 <p class="input-desc">Target % of admitted students who enroll.</p>
-                            </div>
-                        </div>
+                    
+                    <!-- Detailed Report Section -->
+                    <div id="detailed-report" class="lg:col-span-3 mt-8 space-y-8 opacity-0 max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
+                         <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 print-break-inside-avoid">
+                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                 <div class="efficiency-gains">
+                                     <h3 class="text-xl font-bold text-slate-800 mb-4">Efficiency Gains by Function</h3>
+                                     <div class="space-y-5">
+                                         <div class="efficiency-item">
+                                             <div class="flex justify-between items-baseline mb-1">
+                                                 <p class="font-semibold text-slate-700">🏛️ Immigration & Compliance</p>
+                                                 <p id="immEfficiency" class="font-bold text-[#8dc73f]">0%</p>
+                                             </div>
+                                             <div class="w-full bg-slate-200 rounded-full h-5"><div id="immEfficiencyFill" class="bg-[#8dc73f] h-5 rounded-full transition-all duration-500"></div></div>
+                                         </div>
+                                         <div class="efficiency-item">
+                                             <div class="flex justify-between items-baseline mb-1">
+                                                 <p class="font-semibold text-slate-700">👥 Advising & Student Support</p>
+                                                 <p id="advEfficiency" class="font-bold text-[#8dc73f]">0%</p>
+                                             </div>
+                                             <div class="w-full bg-slate-200 rounded-full h-5"><div id="advEfficiencyFill" class="bg-[#8dc73f] h-5 rounded-full transition-all duration-500"></div></div>
+                                         </div>
+                                         <div class="efficiency-item">
+                                             <div class="flex justify-between items-baseline mb-1">
+                                                 <p class="font-semibold text-slate-700">📢 Communication & Outreach</p>
+                                                 <p id="commEfficiency" class="font-bold text-[#8dc73f]">0%</p>
+                                             </div>
+                                             <div class="w-full bg-slate-200 rounded-full h-5"><div id="commEfficiencyFill" class="bg-[#8dc73f] h-5 rounded-full transition-all duration-500"></div></div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                  <div class="financial-breakdown">
+                                      <h3 class="text-xl font-bold text-slate-800 mb-4">Annual Financial Breakdown</h3>
+                                      <ul class="space-y-3">
+                                          <li class="flex justify-between items-center py-2 border-b border-slate-100"><span class="text-slate-600">Total Annual Staff Salary Cost</span><span id="totalSalaryCost" class="font-bold text-slate-800">$0</span></li>
+                                          <li class="flex justify-between items-center py-2 border-b border-slate-100"><span class="text-slate-600">Value of Time on Tasks (Current)</span><span id="currentCost" class="font-bold text-slate-800">$0</span></li>
+                                          <li class="flex justify-between items-center py-2 border-b border-slate-100"><span class="text-slate-600">Value of Time on Tasks (w/ TD)</span><span id="projectedCost" class="font-bold text-slate-800">$0</span></li>
+                                          <li class="flex justify-between items-center py-2 border-b border-slate-100" style="color: #8dc73f;"><span class="font-semibold">Annual Efficiency Savings</span><span id="efficiencySavingsDetail" class="font-bold">$0</span></li>
+                                          <li class="flex justify-between items-center py-2 border-b border-slate-100" style="color: #f57922;"><span class="font-semibold">Terra Dotta Investment</span><span id="tdInvestment" class="font-bold">$0</span></li>
+                                          <li class="flex justify-between items-center py-2" style="color: #00aeef;"><span class="font-extrabold text-lg">Net Annual Savings</span><span id="netSavingsDetail" class="font-extrabold text-lg">$0</span></li>
+                                      </ul>
+                                  </div>
+                             </div>
+                             
+                             <!-- NEW: Financial Benefits Summary -->
+                             <div class="mt-8">
+                                <h3 class="text-xl font-bold text-slate-800 mb-4">Financial Benefits Summary</h3>
+                                <div id="tuition-summary" class="space-y-4 text-lg bg-sky-50/70 p-6 rounded-2xl border border-sky-200 text-slate-700">
+                                    <p>By retaining your current international students, you secure <strong id="summary-retention" class="text-sky-800 font-bold">$0</strong> in annual revenue.</p>
+                                    <p>With Terra Dotta, you can realize an estimated <strong id="summary-efficiency-savings" class="text-green-700 font-bold">$0</strong> in annual efficiency savings, resulting in a net annual savings of <strong id="summary-net-savings" class="text-sky-800 font-bold">$0</strong> after accounting for your investment.</p>
+                                    <p>Furthermore, your incoming class represents <strong id="summary-fall-tuition" class="text-sky-800 font-bold">$0</strong> in new tuition this year. Over the next three years, this could grow to a total of <strong id="summary-enrollment-growth" class="text-sky-800 font-bold">$0</strong> in new enrollment revenue.</p>
+                                </div>
+                             </div>
+                         </div>
                     </div>
-
                 </div>
 
                 <!-- Right Column: Results (Sticky) -->
-                <div id="results-sidebar" class="lg:sticky top-8 space-y-8 mt-8 lg:mt-0">
+                <div id="results-sidebar" class="lg:col-span-1 lg:sticky top-8 space-y-8 mt-8 lg:mt-0">
                     <div id="results-dashboard" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-200 print-break-inside-avoid print-shadow-none">
-                         <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
-                            <span class="bg-sky-100 text-[#00aeef] rounded-lg p-2">
-                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" /></svg>
-                            </span>
-                            Your ROI Snapshot
-                        </h2>
-                        <div class="mt-6 space-y-4">
-                            <!-- Key Metric Cards -->
-                            <div class="result-card bg-sky-50 border border-sky-200 text-sky-900 rounded-xl p-5">
-                                <p class="font-medium text-sky-700">Annual Efficiency Savings</p>
-                                <p class="text-4xl font-extrabold tracking-tight highlight-on-update" id="annualEfficiencySavings">$0</p>
-                                <p class="text-sky-600 text-sm mt-1">Value of time recovered by your office.</p>
+                        <div class="space-y-6">
+                             <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
+                                <span class="bg-sky-100 text-[#00aeef] rounded-lg p-2">
+                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" /></svg>
+                                </span>
+                                Your ROI Dashboard
+                            </h2>
+                            
+                            <!-- Investment Input -->
+                            <div class="input-field">
+                                <label for="tdAnnualCost">Annual Terra Dotta Investment ($)</label>
+                                <input type="number" id="tdAnnualCost" placeholder="Enter cost to see ROI">
+                                <p class="input-desc">Your estimated annual software cost.</p>
                             </div>
                             
-                            <div id="final-roi-metrics" class="space-y-4 transition-opacity duration-500 opacity-40">
-                                <div class="result-card bg-[#00aeef] text-white rounded-xl p-5 shadow-lg shadow-sky-500/30">
-                                    <p class="text-sky-200 font-medium">Net Annual Savings</p>
-                                    <p class="text-4xl font-extrabold tracking-tight highlight-on-update" id="netSavings">$0</p>
-                                    <p class="text-sky-200 text-sm mt-1">Efficiency savings minus software cost.</p>
+                            <!-- Results Cards -->
+                            <div id="final-roi-metrics" class="space-y-6 transition-opacity duration-500 opacity-40">
+                                <div class="result-card bg-slate-100 border border-slate-200 text-slate-900">
+                                    <p class="font-medium text-slate-600">3-Year Total Investment</p>
+                                    <p class="text-3xl font-extrabold tracking-tight highlight-on-update" id="totalInvestment">$0</p>
                                 </div>
-
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="result-card bg-slate-100/80 rounded-xl p-4">
-                                        <p class="text-slate-500 text-sm font-medium">ROI</p>
-                                        <p class="text-3xl font-bold gradient-text highlight-on-update" id="roiPercentage">--</p>
-                                    </div>
-                                    <div class="result-card bg-slate-100/80 rounded-xl p-4">
-                                        <p class="text-slate-500 text-sm font-medium">Payback</p>
-                                        <p class="text-3xl font-bold gradient-text highlight-on-update" id="paybackPeriod">-- <span class="text-xl">mo</span></p>
-                                    </div>
+                                <div class="result-card bg-lime-50 border border-lime-200 text-lime-900">
+                                    <p class="font-medium text-lime-700">3-Year Efficiency Savings</p>
+                                    <p class="text-3xl font-extrabold tracking-tight highlight-on-update" id="efficiencySavings">$0</p>
+                                </div>
+                                <div class="result-card bg-sky-50 border border-sky-200 text-sky-900">
+                                    <p class="font-medium text-sky-700">Annual Int'l Tuition Retention</p>
+                                    <p class="text-4xl font-extrabold tracking-tight highlight-on-update" id="tuitionRetention">$0</p>
+                                </div>
+                                <div class="result-card bg-gradient-to-r from-[#8dc73f] to-[#019c96] text-white shadow-lg shadow-lime-500/30">
+                                    <p class="font-medium opacity-80">Annual New Tuition Revenue</p>
+                                    <p class="text-4xl font-extrabold tracking-tight highlight-on-update" id="newTuitionRevenue">$0</p>
+                                    <p class="opacity-80 text-sm mt-1">From projected new fall enrollments.</p>
                                 </div>
                             </div>
-
-                             <!-- Efficiency Chart -->
-                            <div>
-                                 <h3 class="font-semibold text-slate-800 text-md mb-3">Overall Office Time Savings</h3>
-                                 <div class="w-full bg-slate-200 rounded-full h-8 flex items-center px-1 relative overflow-hidden">
-                                     <div id="timeSavingsFill" class="bg-gradient-to-r from-[#00aeef] to-[#019c96] h-6 rounded-full transition-all duration-700 ease-out"></div>
-                                     <span id="timeSavings" class="absolute inset-0 flex items-center justify-center text-sm font-bold text-white tracking-wider">0%</span>
-                                 </div>
-                                 <p class="text-xs text-slate-500 mt-2 text-center italic">Time Savings calculations are based on actual Terra Dotta ISSS clients</p>
-                            </div>
+                             <!-- Export Button -->
+                            <div class="no-print pt-2">
+                                 <button id="exportCsvButton" class="w-full flex items-center justify-center gap-2 bg-slate-800 text-white font-semibold py-3 px-4 rounded-lg hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-all">
+                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                                     Export to CSV
+                                 </button>
+                             </div>
                         </div>
-                    </div>
-                     <!-- Print Button -->
-                    <div class="no-print mt-8">
-                         <button onclick="window.print()" class="w-full flex items-center justify-center gap-2 bg-slate-800 text-white font-semibold py-3 px-4 rounded-lg hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500 transition-all">
-                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                              <path fill-rule="evenodd" d="M5 2.75C5 1.784 5.784 1 6.75 1h6.5c.966 0 1.75.784 1.75 1.75v3.552c.377.046.752.097 1.126.153A2.222 2.222 0 0 1 18 8.653v4.097c0 .531-.223 1.02-.584 1.365a2.49 2.49 0 0 1-.822.478c-.281.073-.568.14-.86.203c-.68.14-1.382.23-2.107.278v3.118c0 .966-.784 1.75-1.75 1.75h-6.5A1.75 1.75 0 0 1 5 18.25V2.75Zm1.75-.25a.25.25 0 0 0-.25.25v3.5c0 .138.112.25.25.25h6.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25h-6.5Z" clip-rule="evenodd" />
-                              <path d="M2 9.5a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75v-.01ZM2 11.5a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75V11.5Z" />
-                            </svg>
-                            Save or Print Report
-                        </button>
                     </div>
                 </div>
-            </div>
-
-            <!-- Detailed Analysis & Campus Impact Section -->
-            <div id="detailed-report" class="lg:col-span-3 mt-12 opacity-0 max-h-0 overflow-hidden transition-all duration-700 ease-in-out">
-                 <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200 print-break-inside-avoid">
-                    
-                    <!-- Campus Impact Section -->
-                    <div id="campus-impact" class="mb-12 print-break-inside-avoid">
-                         <div class="bg-gradient-to-r from-[#00aeef] to-[#019c96] rounded-2xl p-8 text-center text-white">
-                            <h2 class="text-3xl font-bold flex items-center justify-center gap-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 opacity-70"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>
-                                Campus Impact with Terra Dotta ISSS
-                            </h2>
-                            <p class="mt-2 opacity-90 max-w-2xl mx-auto">Transform your international office with automated workflows, enhanced compliance, and measurable efficiency gains.</p>
-                         </div>
-                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-                             <div class="impact-card bg-green-50 border-green-200 text-green-900" style="--impact-color: #8dc73f;">
-                                 <h4><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>High Upside</h4>
-                                 <ul class="space-y-2 text-sm"></ul>
-                             </div>
-                              <div class="impact-card bg-blue-50 border-blue-200 text-blue-900" style="--impact-color: #00aeef;">
-                                 <h4><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286Z" /></svg>Low Risk</h4>
-                                 <ul class="space-y-2 text-sm"></ul>
-                             </div>
-                              <div class="impact-card bg-orange-50 border-orange-200 text-orange-900" style="--impact-color: #f57922;">
-                                 <h4><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>Office Benefits</h4>
-                                 <ul class="space-y-2 text-sm"></ul>
-                             </div>
-                              <div class="impact-card bg-purple-50 border-purple-200 text-purple-900" style="--impact-color: #7f3f98;">
-                                 <h4><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.82m5.84-2.56a17.96 17.96 0 0 0-5.84 7.38m5.84-7.38a17.96 17.96 0 0 1-7.38 5.84m-2.56-5.84a6 6 0 0 1 7.38-5.84m-7.38 5.84-2.56 5.84M14.37 8.41a6 6 0 0 1-5.84-7.38v4.82m5.84 2.56a17.96 17.96 0 0 0 5.84-7.38m-5.84 7.38a17.96 17.96 0 0 1 7.38-5.84m2.56 5.84a6 6 0 0 1-7.38 5.84m7.38-5.84 2.56-5.84M8.41 15.63a6 6 0 0 1 7.38 5.84v-4.82m-7.38 5.84a17.96 17.96 0 0 0-5.84-7.38m-5.84 7.38a17.96 17.96 0 0 1-7.38-5.84m-2.56-5.84a6 6 0 0 1 5.84 7.38m-5.84-7.38L2.25 12l5.84 2.56" /></svg>Future-Proof</h4>
-                                  <ul class="space-y-2 text-sm"></ul>
-                             </div>
-                         </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Efficiency Gains by Function -->
-                        <div class="efficiency-gains">
-                            <h3 class="text-xl font-bold text-slate-800 mb-4">Efficiency Gains by Function</h3>
-                            <div class="space-y-5">
-                                <div class="efficiency-item">
-                                    <div class="flex justify-between items-baseline mb-1">
-                                        <p class="font-semibold text-slate-700">🏛️ Immigration & Compliance</p>
-                                        <p id="immEfficiency" class="font-bold text-[#8dc73f]">0%</p>
-                                    </div>
-                                    <div class="w-full bg-slate-200 rounded-full h-5"><div id="immEfficiencyFill" class="bg-[#8dc73f] h-5 rounded-full transition-all duration-500"></div></div>
-                                </div>
-                                <div class="efficiency-item">
-                                    <div class="flex justify-between items-baseline mb-1">
-                                        <p class="font-semibold text-slate-700">👥 Advising & Student Support</p>
-                                        <p id="advEfficiency" class="font-bold text-[#8dc73f]">0%</p>
-                                    </div>
-                                    <div class="w-full bg-slate-200 rounded-full h-5"><div id="advEfficiencyFill" class="bg-[#8dc73f] h-5 rounded-full transition-all duration-500"></div></div>
-                                </div>
-                                <div class="efficiency-item">
-                                    <div class="flex justify-between items-baseline mb-1">
-                                        <p class="font-semibold text-slate-700">📢 Communication & Outreach</p>
-                                        <p id="commEfficiency" class="font-bold text-[#8dc73f]">0%</p>
-                                    </div>
-                                    <div class="w-full bg-slate-200 rounded-full h-5"><div id="commEfficiencyFill" class="bg-[#8dc73f] h-5 rounded-full transition-all duration-500"></div></div>
-                                </div>
-                            </div>
-                        </div>
-                         <!-- Financial Breakdown -->
-                         <div class="financial-breakdown">
-                             <h3 class="text-xl font-bold text-slate-800 mb-4">Financial Breakdown</h3>
-                             <ul class="space-y-3">
-                                 <li class="flex justify-between items-center py-2 border-b border-slate-100"><span class="text-slate-600">Current Annual Service Cost</span><span id="currentCost" class="font-bold text-slate-800">$0</span></li>
-                                 <li class="flex justify-between items-center py-2 border-b border-slate-100"><span class="text-slate-600">Projected Cost w/ Terra Dotta</span><span id="projectedCost" class="font-bold text-slate-800">$0</span></li>
-                                 <li class="flex justify-between items-center py-2 border-b border-slate-100" style="color: #8dc73f;"><span class="font-semibold">Annual Efficiency Savings</span><span id="efficiencySavingsDetail" class="font-bold">$0</span></li>
-                                 <li class="flex justify-between items-center py-2 border-b border-slate-100" style="color: #f57922;"><span class="font-semibold">Terra Dotta Investment</span><span id="tdInvestment" class="font-bold">$0</span></li>
-                                 <li class="flex justify-between items-center py-2" style="color: #00aeef;"><span class="font-extrabold text-lg">Net Annual Savings</span><span id="netSavingsDetail" class="font-extrabold text-lg">$0</span></li>
-                             </ul>
-                         </div>
-                    </div>
-                     <!-- Revenue Opportunity -->
-                     <div class="mt-8 revenue-opportunity">
-                         <h3 class="text-xl font-bold text-slate-800 mb-4 text-center">3-Year Tuition Revenue Opportunity</h3>
-                         <div class="result-card bg-gradient-to-r from-[#8dc73f] to-[#019c96] text-white rounded-xl p-8 shadow-lg shadow-lime-500/30 text-center">
-                            <p class="font-medium opacity-80">Potential Additional Tuition Revenue</p>
-                            <p class="text-5xl font-extrabold tracking-tight highlight-on-update" id="additionalRevenueDetail">$0</p>
-                             <p class="opacity-80 text-sm mt-1">From improved yield rates and enrollment growth.</p>
-                        </div>
-                     </div>
-                 </div>
             </div>
         </main>
     </div>
 
-    <!-- Add CSS classes to the input fields for styling -->
+    <!-- Styling and Logic Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Style the generic input fields
+            // --- Apply Tailwind classes dynamically ---
             document.querySelectorAll('.input-field').forEach(field => {
-                const input = field.querySelector('input');
+                const input = field.querySelector('input, div');
                 const desc = field.querySelector('p');
-                input.classList.add('w-full', 'p-3', 'bg-slate-100', 'rounded-lg', 'border', 'border-slate-200', 'focus:ring-2', 'focus-ring-td-purple', 'focus:outline-none', 'focus:border-sky-400', 'transition');
-                desc.classList.add('text-xs', 'text-slate-500', 'mt-1.5', 'font-medium');
+                if (input.tagName !== 'DIV') {
+                    input.classList.add('w-full', 'p-3', 'bg-slate-100', 'rounded-lg', 'border', 'border-slate-200', 'focus:ring-2', 'focus-ring-td-purple', 'focus:outline-none', 'focus:border-sky-400', 'transition');
+                }
+                if (desc) {
+                    desc.classList.add('text-xs', 'text-slate-500', 'mt-1.5', 'font-medium');
+                }
                 field.querySelector('label').classList.add('text-sm', 'font-semibold', 'text-slate-700', 'mb-1.5', 'block');
             });
-
-             // Style the time-related input fields
             document.querySelectorAll('.time-input').forEach(field => {
                 const input = field.querySelector('input');
                 const reduction = field.dataset.reduction;
                 field.classList.add('relative', 'bg-slate-50', 'rounded-lg', 'p-3', 'border', 'border-slate-200');
-                
                 const labelContainer = document.createElement('div');
                 labelContainer.classList.add('flex', 'justify-between', 'items-center', 'mb-1');
-                
                 const label = field.querySelector('label');
                 label.classList.add('text-sm', 'font-semibold', 'text-slate-700', 'pr-2');
-                
                 const badge = document.createElement('span');
                 badge.textContent = `-${Math.round(parseFloat(reduction) * 100)}%`;
                 badge.classList.add('text-xs', 'font-bold', 'px-2', 'py-0.5', 'rounded-full', 'flex-shrink-0');
                 badge.classList.add(parseFloat(reduction) > 0 ? 'bg-lime-200' : 'bg-slate-200', parseFloat(reduction) > 0 ? 'text-lime-800' : 'text-slate-600');
-                
                 labelContainer.appendChild(label);
                 labelContainer.appendChild(badge);
-                
                 input.classList.add('w-full', 'bg-white', 'rounded-md', 'border', 'border-slate-300', 'focus:ring-2', 'focus-ring-td-purple', 'focus:outline-none', 'focus:border-sky-400', 'transition', 'p-2');
-
                 field.prepend(labelContainer);
-
             });
-            
-            // Style impact cards
-            const impactCardData = {
-                'High Upside': [
-                    'Immediate <strong>40-80% efficiency gains</strong> across core functions',
-                    'ROI typically <strong>200-300%</strong> in first year',
-                    '<strong>Scale without hiring</strong> - handle 2x volume with same staff',
-                    '<strong>Revenue upside</strong> from improved yield rates'
-                ],
-                'Low Risk': [
-                    '<strong>25 years</strong> serving higher education',
-                    '<strong>750+ institutions</strong> trust Terra Dotta',
-                    'Built-in compliance with <strong>SEVP/ICE requirements</strong>',
-                    '<strong>Seamless integration</strong> with existing systems'
-                ],
-                'Office Benefits': [
-                    '<strong>End repetitive tasks</strong> - focus on strategic work',
-                    '<strong>Reduce staff burnout</strong> and improve satisfaction',
-                    'Better <strong>student experience</strong> with faster service',
-                    '<strong>Real-time insights</strong> for data-driven decisions'
-                ],
-                'Future-Proof': [
-                    'Ready for growth - <strong>scale infinitely</strong> with automation',
-                    'Global mobility trends - attract more int\'l talent',
-                    '<strong>Dashboard-powered insights</strong> for predictive analytics',
-                    '<strong>Continuous updates</strong> with regulation changes'
-                ]
-            };
-
-            document.querySelectorAll('.impact-card').forEach(card => {
-                card.classList.add('bg-white', 'p-6', 'rounded-2xl', 'shadow-sm', 'border');
-                const h4 = card.querySelector('h4');
-                h4.classList.add('text-lg', 'font-bold', 'mb-3', 'flex', 'items-center', 'gap-2');
-                h4.style.color = card.style.getPropertyValue('--impact-color');
-                const ul = card.querySelector('ul');
-                ul.innerHTML = ''; // Clear any existing list items
-                
-                const cardTitle = h4.textContent;
-                const items = impactCardData[cardTitle];
-
-                if (items) {
-                    items.forEach(itemText => {
-                        const li = document.createElement('li');
-                        li.classList.add('flex', 'items-start', 'gap-2');
-
-                        const bullet = document.createElement('span');
-                        bullet.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 opacity-70 flex-shrink-0"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" /></svg>';
-                        bullet.style.color = card.style.getPropertyValue('--impact-color');
-                        
-                        const textSpan = document.createElement('span');
-                        textSpan.innerHTML = itemText;
-
-                        li.appendChild(bullet);
-                        li.appendChild(textSpan);
-                        ul.appendChild(li);
-                    });
-                }
-            });
+             document.querySelectorAll('.result-card').forEach(card => {
+                card.classList.add('rounded-xl', 'p-6');
+             });
         });
-    </script>
 
-    <!-- Calculator Logic -->
-    <script>
-        // --- DATA & CONSTANTS ---
-        const terraReductions = {
-            sevisReg: 0.50, issuingForms: 0.60, optProcessing: 0.60,
-            sevisReporting: 0.50, workshops: 0.67, dataManagement: 0.33,
-            frontDesk: 0.80, emailMgmt: 0.67,
-            marketing: 0.67, letterIssuance: 0.75, formCreation: 0.53
-        };
-        const categoryFields = {
-            immigration: ['sevisReg', 'issuingForms', 'optProcessing', 'sevisReporting', 'workshops', 'dataManagement'],
-            advising: ['frontDesk', 'emailMgmt'],
-            communication: ['marketing', 'letterIssuance', 'formCreation']
-        };
-        const allInputIds = [
-            'currentEnrollment', 'fallApplications', 'admittedApplicants', 'fallEnrollments', 
-            'numFTE', 'avgTuition', 'growthRate', 'targetYield', 'avgSalary', 'tdAnnualCost',
-            ...Object.keys(terraReductions)
-        ];
+        // --- Calculator Logic ---
+        (function() {
+            const terraReductions = {
+                sevisReg: 0.50, issuingForms: 0.60, optProcessing: 0.60,
+                sevisReporting: 0.50, workshops: 0.67, dataManagement: 0.33,
+                frontDesk: 0.80, emailMgmt: 0.67,
+                marketing: 0.67, letterIssuance: 0.75, formCreation: 0.53
+            };
+            const categoryFields = {
+                immigration: ['sevisReg', 'issuingForms', 'optProcessing', 'sevisReporting', 'workshops', 'dataManagement'],
+                advising: ['frontDesk', 'emailMgmt'],
+                communication: ['marketing', 'letterIssuance', 'formCreation']
+            };
+            const allInputIds = [
+                'currentEnrollment', 'fallEnrollments', 'admittedApplicants', 'avgTuition', 'avgSalary', 'tdAnnualCost', 'growthRate', 'numFTE',
+                ...Object.keys(terraReductions)
+            ];
 
-        // --- DOM ELEMENTS ---
-        const elements = {};
-        allInputIds.forEach(id => elements[id] = document.getElementById(id));
-        
-        const resultElements = {
-            sidebar: document.getElementById('results-sidebar'),
-            finalRoiMetrics: document.getElementById('final-roi-metrics'),
-            detailedReport: document.getElementById('detailed-report'),
-            // Snapshot
-            annualEfficiencySavings: document.getElementById('annualEfficiencySavings'),
-            netSavings: document.getElementById('netSavings'),
-            roiPercentage: document.getElementById('roiPercentage'),
-            paybackPeriod: document.getElementById('paybackPeriod'),
-            timeSavings: document.getElementById('timeSavings'),
-            timeSavingsFill: document.getElementById('timeSavingsFill'),
-            // Detailed
-            additionalRevenueDetail: document.getElementById('additionalRevenueDetail'),
-            immEfficiency: document.getElementById('immEfficiency'),
-            immEfficiencyFill: document.getElementById('immEfficiencyFill'),
-            advEfficiency: document.getElementById('advEfficiency'),
-            advEfficiencyFill: document.getElementById('advEfficiencyFill'),
-            commEfficiency: document.getElementById('commEfficiency'),
-            commEfficiencyFill: document.getElementById('commEfficiencyFill'),
-            currentCost: document.getElementById('currentCost'),
-            projectedCost: document.getElementById('projectedCost'),
-            efficiencySavingsDetail: document.getElementById('efficiencySavingsDetail'),
-            tdInvestment: document.getElementById('tdInvestment'),
-            netSavingsDetail: document.getElementById('netSavingsDetail')
-        };
-        
-        // --- HELPER FUNCTIONS ---
-        const getVal = (id) => parseFloat(elements[id].value) || 0;
-        const formatCurrency = (amount) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amount);
-        const highlightUpdate = (el) => {
-            if (el) {
-                el.classList.add('updated');
-                el.addEventListener('animationend', () => el.classList.remove('updated'), { once: true });
-            }
-        };
-        
-        // --- CORE CALCULATION LOGIC ---
-        function calculateROI(isInitialLoad = false) {
-            const inputs = {
-                avgSalary: getVal('avgSalary'),
-                tdAnnualCost: getVal('tdAnnualCost'),
-                avgTuition: getVal('avgTuition'),
-                fallApplications: getVal('fallApplications'),
-                admittedApplicants: getVal('admittedApplicants'),
-                fallEnrollments: getVal('fallEnrollments'),
-                targetYield: getVal('targetYield'),
-                growthRate: getVal('growthRate'),
+            const elements = {};
+            allInputIds.forEach(id => elements[id] = document.getElementById(id));
+            elements['targetYield'] = document.getElementById('targetYield'); // Special handling for the div
+            
+            const resultElements = {
+                finalRoiMetrics: document.getElementById('final-roi-metrics'),
+                detailedReport: document.getElementById('detailed-report'),
+                totalInvestment: document.getElementById('totalInvestment'),
+                efficiencySavings: document.getElementById('efficiencySavings'),
+                tuitionRetention: document.getElementById('tuitionRetention'),
+                newTuitionRevenue: document.getElementById('newTuitionRevenue'),
+                immEfficiency: document.getElementById('immEfficiency'),
+                immEfficiencyFill: document.getElementById('immEfficiencyFill'),
+                advEfficiency: document.getElementById('advEfficiency'),
+                advEfficiencyFill: document.getElementById('advEfficiencyFill'),
+                commEfficiency: document.getElementById('commEfficiency'),
+                commEfficiencyFill: document.getElementById('commEfficiencyFill'),
+                currentCost: document.getElementById('currentCost'),
+                projectedCost: document.getElementById('projectedCost'),
+                efficiencySavingsDetail: document.getElementById('efficiencySavingsDetail'),
+                tdInvestment: document.getElementById('tdInvestment'),
+                netSavingsDetail: document.getElementById('netSavingsDetail'),
+                summaryRetention: document.getElementById('summary-retention'),
+                summaryFallTuition: document.getElementById('summary-fall-tuition'),
+                summaryEnrollmentGrowth: document.getElementById('summary-enrollment-growth'),
+                summaryEfficiencySavings: document.getElementById('summary-efficiency-savings'),
+                summaryNetSavings: document.getElementById('summary-net-savings'),
+                totalSalaryCost: document.getElementById('totalSalaryCost')
             };
 
-            let totalCurrentWeeklyHours = 0;
-            let totalAfterWeeklyHours = 0;
-            const categorySavings = { immigration: {c:0, a:0}, advising: {c:0, a:0}, communication: {c:0, a:0} };
-
-            Object.entries(categoryFields).forEach(([cat, fields]) => {
-                fields.forEach(id => {
-                    const hours = getVal(id);
-                    const savedHours = hours * (1 - terraReductions[id]);
-                    categorySavings[cat].c += hours;
-                    categorySavings[cat].a += savedHours;
-                });
-                totalCurrentWeeklyHours += categorySavings[cat].c;
-                totalAfterWeeklyHours += categorySavings[cat].a;
-            });
-
-            const hourlyRate = inputs.avgSalary > 0 ? inputs.avgSalary / 2080 : 0;
-            const annualEfficiencySavings = (totalCurrentWeeklyHours - totalAfterWeeklyHours) * 52 * hourlyRate;
-            const overallEfficiencyGain = totalCurrentWeeklyHours > 0 ? (totalCurrentWeeklyHours - totalAfterWeeklyHours) / totalCurrentWeeklyHours : 0;
-            
-            // --- Final ROI Metrics (dependent on software cost) ---
-            let netAnnualSavings = null, roiPercentage = null, paybackPeriod = null;
-            if (inputs.tdAnnualCost > 0) {
-                netAnnualSavings = annualEfficiencySavings - inputs.tdAnnualCost;
-                roiPercentage = (netAnnualSavings / inputs.tdAnnualCost) * 100;
-                paybackPeriod = annualEfficiencySavings > 0 ? (inputs.tdAnnualCost / (annualEfficiencySavings / 12)) : 0;
-                if (!isInitialLoad) {
-                    resultElements.finalRoiMetrics.classList.remove('opacity-40');
-                    resultElements.detailedReport.classList.remove('opacity-0', 'max-h-0');
+            const getVal = (id) => {
+                const el = elements[id];
+                if (!el) return 0;
+                if (el.tagName === 'DIV') {
+                    return parseFloat(el.textContent.replace('%','')) || 0;
                 }
-            } else {
-                resultElements.finalRoiMetrics.classList.add('opacity-40');
-                resultElements.detailedReport.classList.add('opacity-0', 'max-h-0');
+                return parseFloat(el.value) || 0;
+            }
+            const formatCurrency = (amount) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(amount);
+            const highlightUpdate = (el) => {
+                if (el) {
+                    el.classList.add('updated');
+                    el.addEventListener('animationend', () => el.classList.remove('updated'), { once: true });
+                }
+            };
+
+            function getCalculationResults() {
+                 // --- 1. Get all input values ---
+                const inputs = {
+                    avgSalary: getVal('avgSalary'),
+                    tdAnnualCost: getVal('tdAnnualCost'),
+                    avgTuition: getVal('avgTuition'),
+                    currentEnrollment: getVal('currentEnrollment'),
+                    fallEnrollments: getVal('fallEnrollments'),
+                    admittedApplicants: getVal('admittedApplicants'),
+                    growthRate: getVal('growthRate'),
+                    numFTE: getVal('numFTE')
+                };
+                
+                // --- Auto-calculate Yield Rate ---
+                const currentYieldRate = inputs.admittedApplicants > 0 ? (inputs.fallEnrollments / inputs.admittedApplicants) : 0;
+                
+                // --- 2. Calculate Efficiency Savings ---
+                const hourlyRate = inputs.avgSalary > 0 ? inputs.avgSalary / 2080 : 0;
+                const categorySavings = { immigration: {c:0, a:0}, advising: {c:0, a:0}, communication: {c:0, a:0} };
+
+                Object.entries(categoryFields).forEach(([cat, fields]) => {
+                    fields.forEach(id => {
+                        const hours = getVal(id);
+                        const savedHours = hours * (1 - terraReductions[id]);
+                        categorySavings[cat].c += hours;
+                        categorySavings[cat].a += savedHours;
+                    });
+                });
+
+                const totalCurrentWeeklyHours = categorySavings.immigration.c + categorySavings.advising.c + categorySavings.communication.c;
+                const totalAfterWeeklyHours = categorySavings.immigration.a + categorySavings.advising.a + categorySavings.communication.a;
+                const annualEfficiencySavings = (totalCurrentWeeklyHours - totalAfterWeeklyHours) * 52 * hourlyRate;
+                const totalEfficiencySavings = annualEfficiencySavings * 3; // Over 3 years
+
+                // --- 3. Calculate Tuition Metrics ---
+                const currentTuitionRetention = inputs.currentEnrollment * inputs.avgTuition;
+                const fallTuition = inputs.fallEnrollments * inputs.avgTuition;
+                
+                let revenueByEnrollments = 0;
+                for (let year = 1; year <= 3; year++) {
+                    const enrolls = inputs.fallEnrollments * Math.pow(1 + (inputs.growthRate / 100), year - 1);
+                    revenueByEnrollments += enrolls * inputs.avgTuition;
+                }
+                const newTuitionRevenue = fallTuition; // For the main dashboard card (Annual)
+
+                // --- 4. Calculate Investment & Detailed Breakdown ---
+                const totalInvestment = inputs.tdAnnualCost * 3;
+                const netAnnualSavings = annualEfficiencySavings - inputs.tdAnnualCost;
+                const currentServiceCost = totalCurrentWeeklyHours * 52 * hourlyRate;
+                const projectedServiceCost = totalAfterWeeklyHours * 52 * hourlyRate;
+                const totalSalaryCost = inputs.numFTE * inputs.avgSalary;
+                const immEfficiencyGain = categorySavings.immigration.c > 0 ? (categorySavings.immigration.c - categorySavings.immigration.a) / categorySavings.immigration.c : 0;
+                const advEfficiencyGain = categorySavings.advising.c > 0 ? (categorySavings.advising.c - categorySavings.advising.a) / categorySavings.advising.c : 0;
+                const commEfficiencyGain = categorySavings.communication.c > 0 ? (categorySavings.communication.c - categorySavings.communication.a) / categorySavings.communication.c : 0;
+                
+                return {
+                    inputs, currentYieldRate, totalInvestment, totalEfficiencySavings, currentTuitionRetention, newTuitionRevenue,
+                    annualEfficiencySavings, netAnnualSavings, currentServiceCost, projectedServiceCost, totalSalaryCost,
+                    immEfficiencyGain, advEfficiencyGain, commEfficiencyGain, fallTuition, revenueByEnrollments
+                };
             }
 
-            // --- Other Detailed Metrics ---
-            const immEfficiencyGain = categorySavings.immigration.c > 0 ? (categorySavings.immigration.c - categorySavings.immigration.a) / categorySavings.immigration.c : 0;
-            const advEfficiencyGain = categorySavings.advising.c > 0 ? (categorySavings.advising.c - categorySavings.advising.a) / categorySavings.advising.c : 0;
-            const commEfficiencyGain = categorySavings.communication.c > 0 ? (categorySavings.communication.c - categorySavings.communication.a) / categorySavings.communication.c : 0;
+            function calculateAndDisplayROI() {
+                const results = getCalculationResults();
 
-            const currentYieldRate = inputs.admittedApplicants > 0 ? (inputs.fallEnrollments / inputs.admittedApplicants) : 0;
-            const yieldImprovement = Math.max(0, (inputs.targetYield / 100) - currentYieldRate);
-            let cumulativeAdditionalRevenue = 0;
-            for (let year = 1; year <= 3; year++) {
-                const admittedThisYear = inputs.admittedApplicants * Math.pow(1 + (inputs.growthRate / 100), year - 1);
-                cumulativeAdditionalRevenue += (admittedThisYear * yieldImprovement) * inputs.avgTuition;
-            }
+                // Update UI with results
+                elements.targetYield.textContent = `${(results.currentYieldRate * 100).toFixed(1)}%`;
+                
+                if (results.inputs.tdAnnualCost > 0) {
+                     resultElements.finalRoiMetrics.classList.remove('opacity-40');
+                     resultElements.detailedReport.classList.remove('opacity-0', 'max-h-0');
+                } else {
+                     resultElements.finalRoiMetrics.classList.add('opacity-40');
+                     resultElements.detailedReport.classList.add('opacity-0', 'max-h-0');
+                }
 
-            const currentServiceCost = totalCurrentWeeklyHours * 52 * hourlyRate;
-            const projectedServiceCost = totalAfterWeeklyHours * 52 * hourlyRate;
+                // Update Dashboard
+                resultElements.totalInvestment.textContent = formatCurrency(results.totalInvestment);
+                resultElements.efficiencySavings.textContent = formatCurrency(results.totalEfficiencySavings);
+                resultElements.tuitionRetention.textContent = formatCurrency(results.currentTuitionRetention);
+                resultElements.newTuitionRevenue.textContent = formatCurrency(results.newTuitionRevenue);
 
-            updateUI({
-                annualEfficiencySavings, overallEfficiencyGain, netAnnualSavings, roiPercentage, paybackPeriod,
-                immEfficiencyGain, advEfficiencyGain, commEfficiencyGain,
-                currentServiceCost, projectedServiceCost, cumulativeAdditionalRevenue, tdAnnualCost: inputs.tdAnnualCost
-            }, isInitialLoad);
-        }
-
-        function updateUI(results, isInitialLoad) {
-            // Update Snapshot
-            resultElements.annualEfficiencySavings.textContent = isInitialLoad ? "$0" : formatCurrency(results.annualEfficiencySavings);
-            resultElements.netSavings.textContent = results.netAnnualSavings !== null ? formatCurrency(results.netAnnualSavings) : '$...';
-            resultElements.roiPercentage.textContent = results.roiPercentage !== null ? `${Math.round(results.roiPercentage)}%` : '--';
-            resultElements.paybackPeriod.innerHTML = results.paybackPeriod !== null ? `${Math.ceil(results.paybackPeriod)} <span class="text-xl">mo</span>` : '--';
-            const timeSavingsPercent = isInitialLoad ? 0 : Math.round(results.overallEfficiencyGain * 100);
-            resultElements.timeSavings.textContent = `${timeSavingsPercent}%`;
-            resultElements.timeSavingsFill.style.width = `${timeSavingsPercent}%`;
-
-            if (!isInitialLoad) {
-                // Update Detailed Report only if it's not the initial load
+                // Update Detailed Report
                 const immPercent = Math.round(results.immEfficiencyGain * 100);
                 resultElements.immEfficiency.textContent = `${immPercent}%`;
                 resultElements.immEfficiencyFill.style.width = `${immPercent}%`;
@@ -626,37 +464,97 @@
                 resultElements.commEfficiency.textContent = `${commPercent}%`;
                 resultElements.commEfficiencyFill.style.width = `${commPercent}%`;
 
+                resultElements.totalSalaryCost.textContent = formatCurrency(results.totalSalaryCost);
                 resultElements.currentCost.textContent = formatCurrency(results.currentServiceCost);
                 resultElements.projectedCost.textContent = formatCurrency(results.projectedServiceCost);
                 resultElements.efficiencySavingsDetail.textContent = formatCurrency(results.annualEfficiencySavings);
-                resultElements.tdInvestment.textContent = formatCurrency(results.tdAnnualCost);
-                resultElements.netSavingsDetail.textContent = results.netAnnualSavings !== null ? formatCurrency(results.netAnnualSavings) : '$...';
-                resultElements.additionalRevenueDetail.textContent = formatCurrency(results.cumulativeAdditionalRevenue);
+                resultElements.tdInvestment.textContent = formatCurrency(results.inputs.tdAnnualCost);
+                resultElements.netSavingsDetail.textContent = formatCurrency(results.netAnnualSavings);
                 
-                // Highlight all visible metrics
+                // Update new Tuition Revenue Summary
+                resultElements.summaryRetention.textContent = formatCurrency(results.currentTuitionRetention);
+                resultElements.summaryFallTuition.textContent = formatCurrency(results.fallTuition);
+                resultElements.summaryEnrollmentGrowth.textContent = formatCurrency(results.revenueByEnrollments);
+                resultElements.summaryEfficiencySavings.textContent = formatCurrency(results.annualEfficiencySavings);
+                resultElements.summaryNetSavings.textContent = formatCurrency(results.netAnnualSavings);
+
+                // Animate the updated values
                 Object.values(resultElements).forEach(el => highlightUpdate(el));
             }
-        }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const allInputs = document.querySelectorAll('input[type="number"]');
-            allInputs.forEach(input => {
-                if(input.value) {
-                    input.classList.add('text-slate-400');
-                }
-                input.addEventListener('focus', (e) => {
-                    e.target.classList.remove('text-slate-400');
-                    e.target.select();
+            function exportDataToCsv() {
+                const results = getCalculationResults();
+                const { inputs } = results;
+
+                const data = [
+                    // Section: Inputs
+                    ["Category", "Item", "Value"],
+                    ["Profile", "Current International Enrollment", inputs.currentEnrollment],
+                    ["Profile", "Fall Admitted Applicants", inputs.admittedApplicants],
+                    ["Profile", "New Fall Enrollments", inputs.fallEnrollments],
+                    ["Profile", "Average Annual Int'l Tuition ($)", inputs.avgTuition],
+                    ["Profile", "Average FTE Salary (Fully Loaded)", inputs.avgSalary],
+                    ["Profile", "ISSS Office FTE", inputs.numFTE],
+                    ["Profile", "Current Intl. Yield Rate (%)", (results.currentYieldRate * 100).toFixed(1)],
+                    ["Profile", "Expected Annual Growth Rate (%)", inputs.growthRate],
+                    ["Profile", "Annual Terra Dotta Investment ($)", inputs.tdAnnualCost],
+                    
+                    // Section: Weekly Time Allocation
+                    ["Weekly Time (Hours)", "Immigration: SEVIS Registration", getVal('sevisReg')],
+                    ["Weekly Time (Hours)", "Immigration: I-20/DS-2019 Issuance", getVal('issuingForms')],
+                    ["Weekly Time (Hours)", "Immigration: CPT/OPT/STEM I-20", getVal('optProcessing')],
+                    ["Weekly Time (Hours)", "Immigration: SEVIS Batching/Reporting", getVal('sevisReporting')],
+                    ["Weekly Time (Hours)", "Immigration: CPT/OPT Workshops", getVal('workshops')],
+                    ["Weekly Time (Hours)", "Immigration: Data Management (peak)", getVal('dataManagement')],
+                    ["Weekly Time (Hours)", "Advising: Front Desk Inquiries", getVal('frontDesk')],
+                    ["Weekly Time (Hours)", "Advising: Email Management", getVal('emailMgmt')],
+                    ["Weekly Time (Hours)", "Communication: Marketing/Communication", getVal('marketing')],
+                    ["Weekly Time (Hours)", "Communication: Letter Issuance (SSN, visa)", getVal('letterIssuance')],
+                    ["Weekly Time (Hours)", "Communication: Forms & Surveys (peak)", getVal('formCreation')],
+                    
+                    // Section: Calculated Results
+                    ["Results", "3-Year Total Investment", results.totalInvestment],
+                    ["Results", "3-Year Efficiency Savings", results.totalEfficiencySavings],
+                    ["Results", "Annual Int'l Tuition Retention", results.currentTuitionRetention],
+                    ["Results", "Annual New Tuition Revenue", results.newTuitionRevenue],
+                    ["Results", "Annual Efficiency Savings", results.annualEfficiencySavings],
+                    ["Results", "Net Annual Savings", results.netAnnualSavings],
+                    ["Results", "Total Annual Staff Salary Cost", results.totalSalaryCost],
+                    ["Results", "Value of Time on Tasks (Current)", results.currentServiceCost],
+                    ["Results", "Value of Time on Tasks (w/ TD)", results.projectedServiceCost],
+                    ["Results", "Fall Enrollment Tuition", results.fallTuition],
+                    ["Results", "3-Year Revenue: Enrollment Growth", results.revenueByEnrollments],
+                ];
+
+                let csvContent = "data:text/csv;charset=utf-8,";
+                data.forEach(function(rowArray) {
+                    let row = rowArray.join(",");
+                    csvContent += row + "\r\n";
                 });
 
-                 input.addEventListener('input', () => {
-                    calculateROI(false);
-                 });
+                const encodedUri = encodeURI(csvContent);
+                const link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "terra_dotta_roi_analysis.csv");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+
+            // --- Event Listeners ---
+            allInputIds.forEach(id => {
+                const input = elements[id];
+                if (input) {
+                    input.addEventListener('input', calculateAndDisplayROI);
+                    input.addEventListener('focus', (e) => e.target.select());
+                }
             });
-            
-            // Calculate initial (zero) state on load
-            calculateROI(true);
-        });
+
+            document.getElementById('exportCsvButton').addEventListener('click', exportDataToCsv);
+
+            // Initial calculation on page load
+            calculateAndDisplayROI();
+        })();
     </script>
 </body>
 </html>
