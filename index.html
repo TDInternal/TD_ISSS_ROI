@@ -866,85 +866,86 @@
         </form>
 
         <!-- Print View (Hidden) -->
-        <div id="print-view" class="hidden print-only bg-white p-8">
+        <div id="print-view" class="hidden print-only bg-white p-6">
             <div class="max-w-4xl mx-auto">
-                <header class="mb-8 border-b pb-4">
-                    <h1 class="text-3xl font-bold text-gray-900">Terra Dotta ISSS ROI Analysis Report</h1>
-                    <p class="text-gray-600 mt-2">Generated on <span id="print-date"></span></p>
+                <header class="mb-6 border-b pb-3">
+                    <h1 class="text-2xl font-bold text-gray-900">Terra Dotta ISSS ROI Analysis Report</h1>
+                    <h2 id="print-institution-name" class="text-lg font-semibold text-gray-700 mt-1"></h2>
+                    <p class="text-gray-600 text-sm mt-1">Generated on <span id="print-date"></span></p>
                 </header>
                 
-                <section class="mb-8">
-                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Executive Summary</h2>
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div class="bg-gray-50 p-4 rounded">
-                            <div class="text-sm text-gray-600">3-Year Total Investment</div>
-                            <div class="text-2xl font-bold text-gray-900" data-print-id="totalInvestment">$0</div>
+                <section class="mb-6">
+                    <h2 class="text-lg font-semibold mb-3 text-gray-800">Executive Summary</h2>
+                    <div class="grid grid-cols-4 gap-3 mb-4">
+                        <div class="bg-gray-50 p-3 rounded">
+                            <div class="text-xs text-gray-600">3-Year Investment</div>
+                            <div class="text-xl font-bold text-gray-900" data-print-id="totalInvestment">$0</div>
                         </div>
-                        <div class="bg-green-50 p-4 rounded">
-                            <div class="text-sm text-gray-600">3-Year Efficiency Savings</div>
-                            <div class="text-2xl font-bold text-green-600" data-print-id="efficiencySavings">$0</div>
+                        <div class="bg-green-50 p-3 rounded">
+                            <div class="text-xs text-gray-600">3-Year Savings</div>
+                            <div class="text-xl font-bold text-green-600" data-print-id="efficiencySavings">$0</div>
                         </div>
-                        <div class="bg-blue-50 p-4 rounded">
-                            <div class="text-sm text-gray-600">Annual Tuition Retention</div>
-                            <div class="text-2xl font-bold text-blue-600" data-print-id="tuitionRetention">$0</div>
+                        <div class="bg-blue-50 p-3 rounded">
+                            <div class="text-xs text-gray-600">Annual Retention</div>
+                            <div class="text-xl font-bold text-blue-600" data-print-id="tuitionRetention">$0</div>
                         </div>
-                        <div class="bg-purple-50 p-4 rounded">
-                            <div class="text-sm text-gray-600">Annual New Revenue</div>
-                            <div class="text-2xl font-bold text-purple-600" data-print-id="newTuitionRevenue">$0</div>
+                        <div class="bg-purple-50 p-3 rounded">
+                            <div class="text-xs text-gray-600">New Revenue</div>
+                            <div class="text-xl font-bold text-purple-600" data-print-id="newTuitionRevenue">$0</div>
                         </div>
                     </div>
                 </section>
                 
-                <section class="mb-8">
-                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Institution Profile</h2>
-                    <div class="grid grid-cols-3 gap-4 text-sm">
+                <section class="mb-6">
+                    <h2 class="text-lg font-semibold mb-3 text-gray-800">Institution Profile</h2>
+                    <div class="grid grid-cols-3 gap-3 text-sm">
                         <div>
                             <span class="text-gray-600">Current Enrollment:</span>
-                            <span class="font-semibold" data-print-id="currentEnrollment">0</span>
+                            <span class="font-semibold ml-1" data-print-id="currentEnrollment">0</span>
                         </div>
                         <div>
                             <span class="text-gray-600">Fall Enrollments:</span>
-                            <span class="font-semibold" data-print-id="fallEnrollments">0</span>
+                            <span class="font-semibold ml-1" data-print-id="fallEnrollments">0</span>
                         </div>
                         <div>
-                            <span class="text-gray-600">Admitted Applicants:</span>
-                            <span class="font-semibold" data-print-id="admittedApplicants">0</span>
+                            <span class="text-gray-600">Admitted:</span>
+                            <span class="font-semibold ml-1" data-print-id="admittedApplicants">0</span>
                         </div>
                         <div>
                             <span class="text-gray-600">Avg Tuition:</span>
-                            <span class="font-semibold" data-print-id="avgTuition">$0</span>
+                            <span class="font-semibold ml-1" data-print-id="avgTuition">$0</span>
                         </div>
                         <div>
                             <span class="text-gray-600">Avg Salary:</span>
-                            <span class="font-semibold" data-print-id="avgSalary">$0</span>
+                            <span class="font-semibold ml-1" data-print-id="avgSalary">$0</span>
                         </div>
                         <div>
                             <span class="text-gray-600">FTE Count:</span>
-                            <span class="font-semibold" data-print-id="numFTE">0</span>
+                            <span class="font-semibold ml-1" data-print-id="numFTE">0</span>
                         </div>
                     </div>
                 </section>
                 
                 <section>
-                    <h2 class="text-xl font-semibold mb-4 text-gray-800">Cost Analysis</h2>
-                    <div class="space-y-2">
-                        <div class="flex justify-between py-2 border-b">
+                    <h2 class="text-lg font-semibold mb-3 text-gray-800">Cost Analysis</h2>
+                    <div class="space-y-1 text-sm">
+                        <div class="flex justify-between py-1 border-b">
                             <span>Current Service Cost</span>
                             <span class="font-semibold" data-print-id="currentCostLabel">$0</span>
                         </div>
-                        <div class="flex justify-between py-2 border-b">
+                        <div class="flex justify-between py-1 border-b">
                             <span>Projected Cost with Terra Dotta</span>
                             <span class="font-semibold" data-print-id="projectedCostLabel">$0</span>
                         </div>
-                        <div class="flex justify-between py-2 bg-green-50 px-2 rounded">
+                        <div class="flex justify-between py-1 bg-green-50 px-2 rounded">
                             <span>Annual Efficiency Savings</span>
                             <span class="font-bold text-green-600" data-print-id="efficiencySavingsDetail">$0</span>
                         </div>
-                        <div class="flex justify-between py-2">
+                        <div class="flex justify-between py-1">
                             <span>Terra Dotta Annual Investment</span>
                             <span class="font-semibold" data-print-id="tdInvestment">$0</span>
                         </div>
-                        <div class="flex justify-between py-3 bg-blue-50 px-2 rounded mt-4">
+                        <div class="flex justify-between py-2 bg-blue-50 px-2 rounded mt-3">
                             <span class="font-semibold">Net Annual Savings</span>
                             <span class="font-bold text-blue-600" data-print-id="netSavingsDetail">$0</span>
                         </div>
@@ -1373,6 +1374,12 @@
 
         // Export to PDF
         async function exportToPDF() {
+            // Prompt for institution name
+            const institutionName = prompt('Please enter your institution name:');
+            if (!institutionName) {
+                return; // User cancelled
+            }
+            
             const button = document.getElementById('exportPdfButton');
             const originalContent = button.innerHTML;
             
@@ -1387,18 +1394,28 @@
                     Generating PDF...
                 `;
                 
-                // Show print view
+                // Add institution name to print view
+                const institutionElement = document.getElementById('print-institution-name');
+                if (institutionElement) {
+                    institutionElement.textContent = institutionName;
+                }
+                
+                // Show print view with adjusted size for single page
                 const printView = document.getElementById('print-view');
                 printView.classList.remove('hidden');
                 printView.style.position = 'absolute';
                 printView.style.left = '-9999px';
                 printView.style.width = '1024px';
+                printView.style.transform = 'scale(0.85)'; // Scale down to fit on one page
+                printView.style.transformOrigin = 'top left';
                 
                 // Generate PDF
                 const canvas = await html2canvas(printView, {
-                    scale: 2,
+                    scale: 1.5, // Reduced from 2 to fit content better
                     useCORS: true,
-                    backgroundColor: '#FFFFFF'
+                    backgroundColor: '#FFFFFF',
+                    windowWidth: 1024,
+                    windowHeight: 768
                 });
                 
                 const imgData = canvas.toDataURL('image/png');
@@ -1410,21 +1427,27 @@
                 
                 const pageWidth = pdf.internal.pageSize.getWidth();
                 const pageHeight = pdf.internal.pageSize.getHeight();
-                const imgWidth = pageWidth;
-                const imgHeight = canvas.height * (imgWidth / canvas.width);
                 
-                let heightLeft = imgHeight;
-                let position = 0;
+                // Calculate dimensions to fit on one page
+                const margin = 20;
+                const availableWidth = pageWidth - (2 * margin);
+                const availableHeight = pageHeight - (2 * margin);
                 
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
+                let imgWidth = availableWidth;
+                let imgHeight = canvas.height * (imgWidth / canvas.width);
                 
-                while (heightLeft > 0) {
-                    position = heightLeft - imgHeight;
-                    pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pageHeight;
+                // If height exceeds page, scale to fit height
+                if (imgHeight > availableHeight) {
+                    imgHeight = availableHeight;
+                    imgWidth = canvas.width * (imgHeight / canvas.height);
                 }
+                
+                // Center the image on the page
+                const xPosition = (pageWidth - imgWidth) / 2;
+                const yPosition = (pageHeight - imgHeight) / 2;
+                
+                // Add to PDF - single page only
+                pdf.addImage(imgData, 'PNG', xPosition, yPosition, imgWidth, imgHeight);
                 
                 pdf.save('Terra_Dotta_ROI_Analysis.pdf');
                 
@@ -1432,12 +1455,14 @@
                 console.error('PDF generation error:', error);
                 alert('An error occurred while generating the PDF. Please try again.');
             } finally {
-                // Hide print view
+                // Hide print view and reset styles
                 const printView = document.getElementById('print-view');
                 printView.classList.add('hidden');
                 printView.style.position = '';
                 printView.style.left = '';
                 printView.style.width = '';
+                printView.style.transform = '';
+                printView.style.transformOrigin = '';
                 
                 // Restore button
                 button.disabled = false;
